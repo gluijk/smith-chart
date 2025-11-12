@@ -78,7 +78,7 @@ SaveBitmap = function(img, name, trunc=TRUE, gamma=1) {
 
 # Hires transformation: z -> Gamma
 set.seed(10)
-N=80000
+N=500000
 EXTEND=10
 z=runif(N)*EXTEND + 1i * (runif(N)*EXTEND-EXTEND/2)
 Gamma=(z-1)/(z+1)
@@ -115,15 +115,12 @@ SaveBitmap(img, "smithaxes.tif")
 
 # Hires inverse transformation: Gamma -> z
 set.seed(10)
-N=80000
+N=500000
 EXTEND=10
 Gamma=runif(N)*2-1 + 1i * (runif(N)*2-1)
 Gamma=Gamma[Mod(Gamma)<=1 & Gamma!=1]
 N=length(Gamma)
-plot(Re(Gamma), Im(Gamma), asp=1, col=rgb(1,0,0,0.2))
-
 z=(1+Gamma)/(1-Gamma)
-plot(Re(z), Im(z), asp=1)
 
 x0=Re(z)
 y0=Im(z)
@@ -139,7 +136,6 @@ Y0=round( (DIMY-1)/ EXTEND   *(y0+EXTEND/2)+1 )
 X1=round( (DIMX-1)/(EXTEND+1)*(x1+1)+1 )
 Y1=round( (DIMY-1)/ EXTEND   *(y1+EXTEND/2)+1 )
 
-# HIRES plot
 for (i in 1:N) {
     if (X0[i]>=1 & X0[i]<=DIMX & Y0[i]>=1 & Y0[i]<=DIMY) img=DrawLine(img, X0[i], Y0[i], X1[i], Y1[i])
 }
