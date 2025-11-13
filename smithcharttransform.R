@@ -2,6 +2,7 @@
 # www.overfitting.net
 # https://www.overfitting.net/2025/11/la-carta-del-astuto-smith-con-r.html
 
+# https://www.johndcook.com/blog/2022/04/21/mobius-fixed-points/
 
 library(tiff)  # save 16-bit TIFF's
 
